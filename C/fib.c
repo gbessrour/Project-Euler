@@ -1,25 +1,32 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int fib(int);
+unsigned int fib(unsigned int);
 
 void main()
 {   
-    int num, i = 0, c;
+    int num, i = 0, sum = 0, f = 0;
 
     printf("Enter a number: ");
     scanf("%d", &num);
-    for(c = 1; c <= num; c++)
-    {
-        printf("%d ", fib(i));
+
+    while (f < num)
+    {   
+        f = fib(i);
+        if(f % 2 == 0)
+        {
+            sum += f;
+        }
         i++;
     }
+
+    printf("The sum of the even valued terms in the fibonnaci sequence that does not exceed %d is: %d\n", num, sum);
 }   
 
-int fib(int n)
+unsigned int fib(unsigned int n)
 {
     if(n == 0 || n == 1)
-        return n;
+        return n;   
     else 
         return fib(n-1) + fib(n-2);
 }
